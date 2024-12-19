@@ -4,6 +4,8 @@ import appledog.research.interfaces.PropertyContext;
 import appledog.research.service.DbConnectionFactory;
 import appledog.research.standard.AllowableValue;
 import appledog.research.standard.PropertyDescriptor;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 import org.slf4j.Logger;
 
 import java.io.*;
@@ -134,5 +136,8 @@ public class DatabaseUtils implements Serializable {
         } else {
             ps.setClob(2, (Clob) null);
         }
+    }
+    public static JsonArray toJsonArray(String data) {
+        return new JsonParser().parse(data).getAsJsonArray();
     }
 }
